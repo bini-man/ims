@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
         required:true,
         max:1024,
         min:6
+    },
+    status:{
+        type:String
     }
 }) 
 module.exports=mongoose.model('User',UserSchema)

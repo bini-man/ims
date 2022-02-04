@@ -1,7 +1,8 @@
 const express = require('express')
 const app=express();
-const route=require('./route/route')
 const mongoose = require('mongoose')
+const route=require('./route/route')
+require("dotenv").config();
 mongoose.connect('mongodb+srv://bini-man:biniMAN123..@cluster0.tcrqx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 () => console.log('connected to db')
 );

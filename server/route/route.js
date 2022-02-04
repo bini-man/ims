@@ -1,8 +1,9 @@
 const route= require('express').Router()
 const Incident=require('../model/Incident')
 const User = require('../model/User')
+require("dotenv").config();
 const bcrypt = require('bcrypt')
-const { Router } = require('express')
+const jwt = require('jsonwebtoken')
 // for createing incident
 route.post("/incident_creat", async (req,res)=>{
     try {
@@ -31,7 +32,8 @@ route.post("/user_creat", async (req,res)=>{
             last_name:req.body.last_name,
             email:req.body.email,
             role:req.body.role,
-            password:hashPassword
+            password:hashPassword,
+            status:"active"
         })
         const saved_user=await user.save()
         res.send(saved_user)
@@ -98,7 +100,8 @@ route.post('/update_user/:id',async (req,res)=>{
             last_name:req.body.last_name,
             email:req.body.email,
             role:req.body.role,
-            password:hashPassword
+            password:hashPassword,
+            status:req.body.status
     },(function(err,result){
         if(err) return res.send(err)
         res.json("user information successfuly updated")
@@ -117,5 +120,14 @@ route.post('/update_incident/:id',(req,res)=>{
         if(err) return res.send(err)
         res.json("incident information successfuly updated")
     }))
+})
+//to login
+route.post('/login',async (req,res)=>{
+    const user=await User.findOne({email:req.body.email})
+    if(!user) return res.send("email not exists")
+    const valid_password= await bcrypt.compare(req.body.password,user.password)
+    if(!valid_password) return res.status(400).send("invalid password")
+    const token= jwt.sign({_id:user._id},process.env.TOKEN_SECRET)
+    res.header('auth-token',token).send(token);
 })
 module.exports=route;
