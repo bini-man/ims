@@ -1,4 +1,4 @@
-get http://localhost:3000/api/all_incident
+GET http://localhost:3000/api/all_incident
 # Content-Type: application/json
 # {
 #             "first_name":"biniyam",
