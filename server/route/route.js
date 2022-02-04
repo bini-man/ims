@@ -31,8 +31,7 @@ route.post("/user_creat", async (req,res)=>{
             last_name:req.body.last_name,
             email:req.body.email,
             role:req.body.role,
-            password:hashPassword,
-            // status:"Active"
+            password:hashPassword
         })
         const saved_user=await user.save()
         res.send(saved_user)
