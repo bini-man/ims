@@ -1,0 +1,9 @@
+get http://localhost:3000/api/all_incident
+# Content-Type: application/json
+# {
+#             "first_name":"biniyam",
+#             "last_name":"badege",
+#             "email":"biniyambd@dengene.com",
+#             "role":"user",
+#             "password":"biniMAN123.."          
+# }
