@@ -29,5 +29,8 @@ const IncidentSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    incident_assigned_to:{
+        type:String
+    }
 }) 
 module.exports=mongoose.model('Incident',IncidentSchema)
