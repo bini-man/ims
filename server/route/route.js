@@ -4,8 +4,10 @@ const User = require('../model/User')
 require("dotenv").config();
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const verify = require('./Verify')
+
 // for createing incident
-route.post("/incident_creat", async (req,res)=>{
+route.post("/incident_creat", verify,async  (req,res)=>{
     try {
         const incident = new Incident({
             incident_name:req.body.name,
