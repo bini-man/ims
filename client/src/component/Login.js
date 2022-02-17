@@ -1,9 +1,22 @@
-import { Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core'
+import { Backdrop, Box, Button, Fade, Grid, makeStyles, Modal, Typography } from '@material-ui/core'
 import { TextField } from '@mui/material';
-import { width } from '@mui/system';
+import axios from 'axios';
 import React from 'react'
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
     const useStyle=makeStyles({
         img:{
             width:'100%',
@@ -11,31 +24,96 @@ export default function Login() {
             marginTop:'5px'
         },
         side:{
-            marginTop:'5px'
+            marginTop:'5px',
+            marginBottom:'20px'
         },
         form:{
-            marginTop: 20,
-            marginBottom: 20,
-            display:'block'
+           width:'80%',
+            display:'flex',
+
+        },
+        forget:{
+            alignContent:'end',
+            marginTop:'25px',
+           display:'flex'
         }
     })
     const classes=useStyle();
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('')
+    const [logged,setLogged]=useState('')
+    const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
+    
+    const handleClose = () => setOpen(false);
+    let data={
+        "email":email,
+        "password":password
+        
+       }
+    const  handelclick=  () => {
+        setOpen(false);
+           axios.post('http://localhost:3001/api/login',data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(res => {
+                console.log(res)
+                console.log(res.data)
+                if(res.data=='email not exists'){
+                    setLogged(res.data)
+                     setOpen(true);
+                }
+                if(res.data=='invalid password'){
+                    setLogged(res.data)
+                   setOpen(true);
+                }
+                if(res.data=='token'){
+                   
+                    navigate('/create_account')
+            }
+            })
+    }
   return (
         <Grid container>
-            <Grid item md={6} >
-                    <img src='/bg.png' className={classes.img} /> 
+            <Grid item md={6} xs={12}>
+                    <img src='/bg.png' alt='incident 'className={classes.img} /> 
             </Grid>
-            <Grid item md={6} className={classes.side}>
-                <Paper elevation={0}>
-                    <Typography variant='h5' color='primary' >
+            <Grid item md={6} xs={12} className={classes.side}>
+                
+                    <Typography variant='h5' color='primary' className={classes.side}>
                     Sign In To IMS
                     </Typography>
-                    <TextField variant="outlined" required label="Email" fullWidth color='secondary' className={classes.form}/>
-                    
-                    
-                    <TextField variant="outlined" required label="Password" fullWidth color='secondary' className={classes.form}/>
-                      
-                </Paper>
+                    <TextField value={email} onChange={(e)=>setEmail(e.target.value)} variant="outlined" required label="Email"   color='primary' className={classes.form}/> <br/><br/>
+                    <TextField value={password} onChange={(e)=>setPassword(e.target.value)} variant="outlined" required label="Password"  color='primary' className={classes.form}/>
+                      <Typography variant='h5' color='primary' className={classes.forget} > Forget Password?</Typography>
+                      <Button color='secondary' variant="contained"  type="submit" onClick={handelclick} >Login</Button>
+
+                      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+              info in a modal
+            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+              {logged}
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal>
+                
+               
             </Grid>
         </Grid>
   )
