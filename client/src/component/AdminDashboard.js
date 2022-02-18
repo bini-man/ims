@@ -9,6 +9,8 @@ import { Navigate, useNavigate } from 'react-router'
 import { useLocation } from 'react-router-dom'
 
 function AdminDashboard() {
+    const drawerwidth = 260
+
     const item=[{
             text:'Create Account',
             path:'/create_account',
@@ -45,13 +47,19 @@ const useStyles=makeStyles({
     active:{
         background:'#f4f4f4'
     },
-    root:{
-        display:'flex'
-    }
+    // root:{
+    //     display:'flex'
+    // },
+    drawerpaper:{
+        width:drawerwidth
+    },
+    drawer:{
+        width:drawerwidth
+    },
 })
 const classes=useStyles()
   return (
-    <div className={classes.root}>
+    <div >
        
         <Drawer  variant="permanent" classes={{ paper: classes.drawerpaper}}anchor="left" className={classes.drawer}>
             <Typography variant='h6' color='primary'>Admin Dashboadrd</Typography>

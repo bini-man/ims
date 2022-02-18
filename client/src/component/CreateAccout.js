@@ -45,12 +45,12 @@ export default function CreateAccout() {
     <div className={classes.root}>
      
     
-      <Grid container>
-        <Grid item md={3}>
+      {/* <Grid container>
+        <Grid item md={3}> */}
       <AdminDashboard />
-      </Grid>
-      <Grid item md={9} className={classes.page}>
-        <Typography color='primary'>Create User</Typography>
+      {/* </Grid> */}
+      <Grid item md={12} className={classes.page}>
+        <Typography color='primary' variant='h3'>Create User</Typography>
       <TextField value={firstName} onChange={(e)=>setFirstName(e.target.value)} variant="outlined" className={classes.field} required label="First Name"   color='primary' /> <br/><br/>
       <TextField value={lastName} onChange={(e)=>setLastName(e.target.value)} variant="outlined" required label="Last Name" className={classes.field}  color='primary' /> <br/><br/>
       <TextField value={email} onChange={(e)=>setEmail(e.target.value)} variant="outlined" required label="Email" className={classes.field}  color='primary' /> <br/><br/>
@@ -67,7 +67,7 @@ export default function CreateAccout() {
         <br/>
    <Button color="secondary"  type="submit" variant="contained" onClick={hadelclick}>Submit</Button>
       </Grid>          
-      </Grid>
+      {/* </Grid> */}
     </div>
   )
 }

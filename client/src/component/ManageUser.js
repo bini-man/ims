@@ -9,6 +9,9 @@ function ManageUser() {
     card:{
       borderRadius:'5px',
       margin:'10px'
+    },
+    root:{
+      display:'flex'
     }
   })
   const [users,setUsers]=useState([]);
@@ -25,14 +28,18 @@ function ManageUser() {
   ,[])
  
   return (
-    <div>
-       <Grid container>
-        <Grid item md={3}>
+    <div className={classes.root}>
+       {/* <Grid container>
+        <Grid item md={3}> */}
       <AdminDashboard/>
+      {/* </Grid> */}
+      
+      <Grid container >
+      <Grid item md={12} >
+      <Typography color='primary' variant='h3'>Manage User</Typography>
       </Grid>
-  
    {users.map(user=>(
-     <Grid md={3} xs={12}>
+    <Grid item md={4}>
      <Card  elevation={3} className={classes.card} key={user._id}>
        <CardHeader title={user.first_name}
                 subheader={user.email}
@@ -46,9 +53,9 @@ function ManageUser() {
         <Typography variant="body" color="textSecondary">   Status:{user.status}</Typography>
        </CardContent>
        </Card>
-       </Grid> 
+      </Grid> 
    ))}
-    </Grid> 
+   </Grid> 
 </div>
   )
 }
