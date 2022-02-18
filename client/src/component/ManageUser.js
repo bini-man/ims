@@ -5,14 +5,17 @@ import React, { useEffect, useState } from 'react'
 import AdminDashboard from './AdminDashboard'
 
 function ManageUser() {
-  const useStyle=makeStyles({
+  const useStyle=makeStyles((theme)=>{
+    return{
     card:{
       borderRadius:'5px',
-      margin:'10px'
+      margin:'10px',
+      padding:theme.spacing(4)
     },
     root:{
       display:'flex'
     }
+  }
   })
   const [users,setUsers]=useState([]);
   const classes=useStyle()
