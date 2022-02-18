@@ -51,7 +51,8 @@ export default function Login() {
         "password":password
         
        }
-    const  handelclick=  () => {
+    const  handelclick=  (e) => {
+        e.preventDefault()
         setOpen(false);
            axios.post('http://localhost:3001/api/login',data, {
                 headers: {
@@ -85,11 +86,12 @@ export default function Login() {
                     <Typography variant='h5' color='primary' className={classes.side}>
                     Sign In To IMS
                     </Typography>
+                    <form onSubmit={handelclick}>
                     <TextField value={email} onChange={(e)=>setEmail(e.target.value)} variant="outlined" required label="Email"   color='primary' className={classes.form}/> <br/><br/>
                     <TextField value={password} onChange={(e)=>setPassword(e.target.value)} variant="outlined" required label="Password"  color='primary' className={classes.form}/>
                       <Typography variant='h5' color='primary' className={classes.forget} > Forget Password?</Typography>
-                      <Button color='secondary' variant="contained"  type="submit" onClick={handelclick} >Login</Button>
-
+                      <Button color='secondary' variant="contained"  type="submit" >Login</Button>
+                      </form>
                       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -104,7 +106,7 @@ export default function Login() {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              info in a modal
+             Notification
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               {logged}
