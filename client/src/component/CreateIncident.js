@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import AdminDashboard from './AdminDashboard'
 
-export default function CreateAccout() {
+export default function CreateIncident() {
   const [firstName,setFirstName]=useState('')
   const [lastName,setLastName]=useState('')
   const [email,setEmail]=useState('')
@@ -49,8 +49,9 @@ export default function CreateAccout() {
         <Grid item md={3}>
       <AdminDashboard />
       </Grid>
+      <Typography color='primary'>Create Incident</Typography>
+
       <Grid item md={9} className={classes.page}>
-        <Typography color='primary'>Create User</Typography>
       <TextField value={firstName} onChange={(e)=>setFirstName(e.target.value)} variant="outlined" className={classes.field} required label="First Name"   color='primary' /> <br/><br/>
       <TextField value={lastName} onChange={(e)=>setLastName(e.target.value)} variant="outlined" required label="Last Name" className={classes.field}  color='primary' /> <br/><br/>
       <TextField value={email} onChange={(e)=>setEmail(e.target.value)} variant="outlined" required label="Email" className={classes.field}  color='primary' /> <br/><br/>

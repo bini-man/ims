@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import {  createTheme, ThemeProvider } from '@material-ui/core';
 import { purple } from '@material-ui/core/colors';
 import CreateAccout from './component/CreateAccout';
+import ManageUser from './component/ManageUser';
+import CreateIncident from './component/CreateIncident';
+import ManageIncident from './component/ManageIncident';
+import AssignIncident from './component/AssignIncident';
 //import { Switch } from '@material-ui/core';
 // import { Route, Switch } from "react-router";
 const theme=createTheme({
@@ -20,10 +24,16 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+     
       <Router>
         <Routes>
       <Route exact path='/login' element= { <Login/>}></Route>
       <Route  path='/create_account' element= { <CreateAccout/>}></Route>
+      <Route path='/manage_account' element={<ManageUser/>}></Route>
+      <Route path='/create_Incident' element={<CreateIncident/>}></Route>
+      <Route path='/manage_incident' element={<ManageIncident/>}></Route>
+      <Route path='/assign_incident' element={<AssignIncident/>}></Route>
+     
       </Routes>
       </Router>
       </ThemeProvider>
