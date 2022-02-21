@@ -1,5 +1,5 @@
 import { Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles, Paper, Typography } from '@material-ui/core'
-import { CreateOutlined } from '@material-ui/icons'
+import { AirplanemodeActiveOutlined, CreateOutlined } from '@material-ui/icons'
 import { EditAttributesOutlined } from '@material-ui/icons'
 import { AssignmentIndOutlined } from '@material-ui/icons'
 import { SubjectOutlined  } from '@material-ui/icons'
@@ -40,6 +40,12 @@ function AdminDashboard() {
     path:'/assign_incident',
     key:5,
     icon: <AssignmentIndOutlined color="secondary"/>,
+},
+{
+    text:'Deactivate/Activate User',
+    path:'/deactivate_activate',
+    key:6,
+    icon: <AirplanemodeActiveOutlined color="secondary"/>,
 }]
 const navigate=useNavigate()
 const location=useLocation()
