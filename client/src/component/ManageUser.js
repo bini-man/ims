@@ -5,6 +5,7 @@ import { DeleteOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AdminDashboard from './AdminDashboard'
+import { useNavigate } from "react-router-dom";
 
 function ManageUser() {
   const useStyle=makeStyles((theme)=>{
@@ -22,7 +23,9 @@ function ManageUser() {
   const [users,setUsers]=useState([]);
   const classes=useStyle()
   const token=localStorage.getItem('token');
-   useEffect(()=>{
+  const navigate = useNavigate();
+  
+  useEffect(()=>{
     axios.get('http://localhost:3001/api/all_user',{
       headers: {
          'auth-token':token
@@ -36,12 +39,11 @@ function ManageUser() {
    
   }
   ,[])
-  const hadeldelete =(id)=>{
+  const hadeldelete = async (id)=>{
     console.log(id)
-             axios.post(`http://localhost:3001/api/user/${id}`, {
+             axios.delete(`http://localhost:3001/api/user/${id}`, {
               headers: {
-                'Content-Type': 'application/json',
-                   'auth-token':token
+                                     'auth-token':token
                }
            })
            .then(res =>{console.log(res.data)})
@@ -70,12 +72,13 @@ function ManageUser() {
        <Typography variant="body" color="textSecondary">   Email:{user.email}</Typography><br/>
        <Typography variant="body" color="textSecondary">  Role:{user.role}</Typography><br/>
         <Typography variant="body" color="textSecondary">   Status:{user.status}</Typography><br/><br/>
-        <Button variant="contained" color='primary' fullWidth onClick={()=>{
-         hadeldelete(user._id)
-        }}  startIcon={<DeleteOutlined />}>
+        <Button variant="contained" color='primary' fullWidth onClick={()=>hadeldelete(user._id)}  startIcon={<DeleteOutlined />}>
   Delete
 </Button><br/><br/>
-<Button variant="contained" color='secondary' fullWidth startIcon={<EditOutlined />}>
+<Button variant="contained" color='secondary' fullWidth startIcon={<EditOutlined />} onClick={()=>{
+   console.log(user._id)
+   navigate(`/update_user/${user._id}`)
+}}>
   Edit
 </Button>
        </CardContent>

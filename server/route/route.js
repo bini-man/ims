@@ -85,7 +85,7 @@ route.get('/incident/:id', verify, (req,res)=>{
     }))
 })
 // to Delete specific user
-route.post('/user/:id',  verify,(req,res)=>{
+route.delete('/user/:id',  verify,(req,res)=>{
     const user_id= req.params.id;
     User.findByIdAndDelete({_id:user_id},(function(err,result){
         if(err) return res.send(err)
@@ -93,7 +93,7 @@ route.post('/user/:id',  verify,(req,res)=>{
     }))
 })
 // to Delete specific incident
-route.post('/incident/:id', verify, (req,res)=>{
+route.delete('/incident/:id', verify, (req,res)=>{
     const incident_id= req.params.id;
     Incident.findByIdAndDelete({_id:incident_id},(function(err,result){
         if(err) return res.send(err)
@@ -103,15 +103,15 @@ route.post('/incident/:id', verify, (req,res)=>{
 // to update specific user information
 route.post('/update_user/:id', verify, async (req,res)=>{
     const user_id= req.params.id;
-    const salt= await bcrypt.genSalt(10)
-    const hashPassword= await bcrypt.hash(req.body.password,salt)
+    // const salt= await bcrypt.genSalt(10)
+    // const hashPassword= await bcrypt.hash(req.body.password,salt)
     User.findByIdAndUpdate({_id:user_id},{
             first_name:req.body.first_name,
             last_name:req.body.last_name,
             email:req.body.email,
             role:req.body.role,
-            password:hashPassword,
-            status:req.body.status
+            // password:hashPassword,
+            // status:req.body.status
     },(function(err,result){
         if(err) return res.send(err)
         res.json("user information successfuly updated")
@@ -124,7 +124,6 @@ route.post('/update_incident/:id', verify,(req,res)=>{
         incident_name:req.body.name,
         incident_description:req.body.description,
         incident_owner:req.body.owner,
-        incident_created_by:req.body.created_by,
         incident_status:req.body.status
     },(function(err,result){
         if(err) return res.send(err)

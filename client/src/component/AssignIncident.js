@@ -20,7 +20,8 @@ function AssignIncident() {
   const [incident,setIncident]=useState([]);
   const classes=useStyle()
 const token=localStorage.getItem('token');
-const [email,setEmail]=useState([])
+const [email,setEmail]=useState('')
+const [listofemail,setListofemail]=useState([])
    useEffect(()=>{
     axios.get('http://localhost:3001/api/all_unassigned',{
       headers: {
@@ -38,7 +39,7 @@ const [email,setEmail]=useState([])
       }
   })
     .then(res=> res.data)
-    .then(data=>{setEmail(data)
+    .then(data=>{setListofemail(data)
     })
    
   }
@@ -82,8 +83,8 @@ setEmail(event.target.value)
     value={email}
   >
     {
-      email.map(emails=>(
-        <MenuItem value={emails.email}  >{emails.email}</MenuItem>
+      listofemail.map(emails=>(
+        <MenuItem value={emails.email}>{emails.email}</MenuItem>
       ))
     }
    

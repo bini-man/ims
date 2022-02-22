@@ -4,6 +4,7 @@ import { DeleteOutlined, EditOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AdminDashboard from './AdminDashboard'
+import { useNavigate } from "react-router-dom";
 
 function ManageIncident() {
   const useStyle=makeStyles((theme)=>{
@@ -20,6 +21,8 @@ function ManageIncident() {
   })
   const [incident,setIncident]=useState([]);
   const classes=useStyle()
+  const navigate = useNavigate();
+
 const token=localStorage.getItem('token');
 
    useEffect(()=>{
@@ -38,7 +41,7 @@ const token=localStorage.getItem('token');
   ,[])
  const hadeldelete =(id)=>{
  console.log(id)
-          axios.post(`http://localhost:3001/api/incident/${id}`, {
+          axios.delete(`http://localhost:3001/api/incident/${id}`, {
            headers: {
                 'auth-token':token
             }
@@ -74,7 +77,10 @@ const token=localStorage.getItem('token');
         }} fullWidth startIcon={<DeleteOutlined />}>
   Delete
 </Button><br/><br/>
-<Button variant="contained" color='secondary' fullWidth startIcon={<EditOutlined />}>
+<Button variant="contained" color='secondary' fullWidth startIcon={<EditOutlined />} onClick={()=>{
+   console.log(incidents._id)
+   navigate(`/update_incident/${incidents._id}`)
+}}>
   Edit
 </Button>
        </CardContent>
