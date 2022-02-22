@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const verify = require('./Verify')
 
 // for createing incident
-route.post("/incident_creat", async (req,res)=>{
+route.post("/incident_creat", verify,async (req,res)=>{
     const user_id=req.user._id;
     const created_by_d="";
     User.findById({_id:user_id},(async function(err,result){
@@ -29,7 +29,7 @@ route.post("/incident_creat", async (req,res)=>{
    
 })
 // for creating user
-route.post("/user_creat",   async (req,res)=>{
+route.post("/user_creat",  verify, async (req,res)=>{
     const email_check=await User.findOne({email:req.body.email})
     if(email_check) return res.send("email alredy exists")
     const salt= await bcrypt.genSalt(10)
@@ -49,7 +49,7 @@ route.post("/user_creat",   async (req,res)=>{
         res.send(error)
     }
 })
-// to see all incident
+// to see all user
 route.get('/all_user', (req,res)=>{
    
     User.find({},(function(err,result){
@@ -58,8 +58,9 @@ route.get('/all_user', (req,res)=>{
     })
     )
 })
-// to see all user
-route.get('/all_incident', (req,res)=>{
+
+// to see all incident
+route.get('/all_incident', verify,(req,res)=>{
     Incident.find({},(function(err,result){
         if(err) return res.send(err)
         res.json(result)
@@ -136,7 +137,7 @@ route.post('/login',async (req,res)=>{
     const valid_password= await bcrypt.compare(req.body.password,user.password)
     if(!valid_password) return res.send("invalid password")
     const token= jwt.sign({_id:user._id},process.env.TOKEN_SECRET)
-    res.header('auth-token',token).send('token');
+    res.header('auth-token',token).send(token);
 })
 // to assign incidents to users
 route.post('/assign_incident/:id', (req,res)=>{

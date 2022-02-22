@@ -60,8 +60,8 @@ export default function Login() {
                 }
             })
             .then(res => {
-                console.log(res)
-                console.log(res.data)
+                // console.log(res)
+                // console.log(res.data)
                 if(res.data=='email not exists'){
                     setLogged(res.data)
                      setOpen(true);
@@ -70,9 +70,9 @@ export default function Login() {
                     setLogged(res.data)
                    setOpen(true);
                 }
-                if(res.data=='token'){
-                   
-                    navigate('/create_account')
+                if(res.data.startsWith('ey')){
+                  // console.log(res.data)
+                    navigate('/create_account',{state:{header:res.data}})
             }
             })
     }

@@ -2,6 +2,7 @@ import { Button, Container, FormControl, FormControlLabel, FormLabel, Grid, make
 import axios from 'axios'
 import React, { useState } from 'react'
 import AdminDashboard from './AdminDashboard'
+import {useLocation} from 'react-router-dom';
 
 export default function CreateAccout() {
   const [firstName,setFirstName]=useState('')
@@ -10,7 +11,9 @@ export default function CreateAccout() {
   const [role,setRole]=useState('')
   const [password,setPassword]=useState('')
   const [cpassword,setCpassword]=useState('')
-  
+  const location = useLocation();
+
+ const token=location.state.header
   const hadelclick =() =>{
     let data={
       "first_name":firstName,
@@ -22,6 +25,7 @@ export default function CreateAccout() {
     axios.post('http://localhost:3001/api/user_creat',data, {
       headers: {
           'Content-Type': 'application/json',
+          'auth-token':token
       }
   })
   .then(res =>{console.log(res.data)})
