@@ -19,8 +19,14 @@ function ManageIncident() {
   })
   const [incident,setIncident]=useState([]);
   const classes=useStyle()
+const token=localStorage.getItem('token');
+
    useEffect(()=>{
-    axios.get('http://localhost:3001/api/all_incident')
+    axios.get('http://localhost:3001/api/all_incident',{
+      headers: {
+         'auth-token':token
+      }
+  })
     .then(res=> res.data)
     .then(data=>{setIncident(data)
     console.log(data)

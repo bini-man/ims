@@ -7,8 +7,8 @@ export default function CreateIncident() {
   const [name,setName]=useState('')
   const [description,setDescription]=useState('')
   const [owner,setOwner]=useState('')
-  const [createdBy,setCreatedBy]=useState('')
-  const [status,setStatus]=useState('')
+  const [status,setStatus]=useState('Store')
+const token=localStorage.getItem('token');
   
   const hadelclick =() =>{
     let data={
@@ -17,9 +17,12 @@ export default function CreateIncident() {
             "incident_owner":owner,
             "incident_status":status
     }
+         
+    
     axios.post('http://localhost:3001/api/incident_creat',data, {
       headers: {
           'Content-Type': 'application/json',
+          'auth-token':token
       }
   })
   .then(res =>{console.log(res.data)})

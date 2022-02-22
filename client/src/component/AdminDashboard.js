@@ -2,9 +2,7 @@ import { Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles, P
 import { AirplanemodeActiveOutlined, CreateOutlined } from '@material-ui/icons'
 import { EditAttributesOutlined } from '@material-ui/icons'
 import { AssignmentIndOutlined } from '@material-ui/icons'
-import { SubjectOutlined  } from '@material-ui/icons'
-import create from 'material/src/element/create'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router'
 import { useLocation } from 'react-router-dom'
 
@@ -43,7 +41,7 @@ function AdminDashboard() {
 },
 {
     text:'Deactivate/Activate User',
-    path:'/deactivate_activate',
+    path:'/activate_user',
     key:6,
     icon: <AirplanemodeActiveOutlined color="secondary"/>,
 }]
@@ -64,6 +62,11 @@ const useStyles=makeStyles({
     },
 })
 const classes=useStyles()
+const token=localStorage.getItem('token');
+
+useEffect(()=>{
+    if(!token) navigate('/login')
+},[])
   return (
     <div >
        

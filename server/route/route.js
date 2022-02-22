@@ -9,7 +9,7 @@ const verify = require('./Verify')
 // for createing incident
 route.post("/incident_creat", verify,async (req,res)=>{
     const user_id=req.user._id;
-    const created_by_d="";
+   
     User.findById({_id:user_id},(async function(err,result){
         if(err) return res.send(err)
        try {
@@ -50,7 +50,7 @@ route.post("/user_creat",  verify, async (req,res)=>{
     }
 })
 // to see all user
-route.get('/all_user', (req,res)=>{
+route.get('/all_user', verify,(req,res)=>{
    
     User.find({},(function(err,result){
         if(err) return res.send(err)
@@ -68,7 +68,7 @@ route.get('/all_incident', verify,(req,res)=>{
     )
 })
 // to return specific user
-route.get('/user/:id',(req,res)=>{
+route.get('/user/:id',verify,(req,res)=>{
     const user_id= req.params.id;
     User.findById({_id:user_id},(function(err,result){
         if(err) return res.send(err)
@@ -76,7 +76,7 @@ route.get('/user/:id',(req,res)=>{
     }))
 })
 // to return specific incident
-route.get('/incident/:id',  (req,res)=>{
+route.get('/incident/:id', verify, (req,res)=>{
     const incident_id= req.params.id;
     Incident.findById({_id:incident_id},(function(err,result){
         if(err) return res.send(err)
@@ -84,7 +84,7 @@ route.get('/incident/:id',  (req,res)=>{
     }))
 })
 // to Delete specific user
-route.post('/user/:id',  (req,res)=>{
+route.post('/user/:id',  verify,(req,res)=>{
     const user_id= req.params.id;
     User.findByIdAndDelete({_id:user_id},(function(err,result){
         if(err) return res.send(err)
@@ -92,7 +92,7 @@ route.post('/user/:id',  (req,res)=>{
     }))
 })
 // to Delete specific incident
-route.post('/incident/:id', (req,res)=>{
+route.post('/incident/:id', verify, (req,res)=>{
     const incident_id= req.params.id;
     Incident.findByIdAndDelete({_id:incident_id},(function(err,result){
         if(err) return res.send(err)
@@ -100,7 +100,7 @@ route.post('/incident/:id', (req,res)=>{
     }))
 })
 // to update specific user information
-route.post('/update_user/:id', async (req,res)=>{
+route.post('/update_user/:id', verify, async (req,res)=>{
     const user_id= req.params.id;
     const salt= await bcrypt.genSalt(10)
     const hashPassword= await bcrypt.hash(req.body.password,salt)
@@ -117,7 +117,7 @@ route.post('/update_user/:id', async (req,res)=>{
     }))
 })
 // to update specific incident information
-route.post('/update_incident/:id', (req,res)=>{
+route.post('/update_incident/:id', verify,(req,res)=>{
     const incident_id= req.params.id;
     Incident.findByIdAndUpdate({_id:incident_id},{
         incident_name:req.body.name,
@@ -140,7 +140,7 @@ route.post('/login',async (req,res)=>{
     res.header('auth-token',token).send(token);
 })
 // to assign incidents to users
-route.post('/assign_incident/:id', (req,res)=>{
+route.post('/assign_incident/:id', verify,(req,res)=>{
     const incident_id= req.params.id;
     const user_id=req.user._id
     User.findById({_id:user_id},(async function(err,result){
@@ -158,7 +158,7 @@ route.post('/assign_incident/:id', (req,res)=>{
 }))
 })
 // incident's created by user's or assigned to them
-route.get('/created_assigned', (req,res)=>{
+route.get('/created_assigned', verify,(req,res)=>{
     const user_id=req.user._id
    
     User.findById({_id:user_id},( async function(err,result){

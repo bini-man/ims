@@ -1,7 +1,7 @@
 import { Backdrop, Box, Button, Fade, Grid, makeStyles, Modal, Typography } from '@material-ui/core'
 import { TextField } from '@mui/material';
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,11 @@ export default function Login() {
     const [logged,setLogged]=useState('')
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-    
+    const token=localStorage.getItem('token');
+
+useEffect(()=>{
+    if(token) navigate('/create_account')
+},[])
     const handleClose = () => setOpen(false);
     let data={
         "email":email,
@@ -71,7 +75,7 @@ export default function Login() {
                    setOpen(true);
                 }
                 if(res.data.startsWith('ey')){
-                  // console.log(res.data)
+                  localStorage.setItem('token',res.data)
                     navigate('/create_account',{state:{header:res.data}})
             }
             })

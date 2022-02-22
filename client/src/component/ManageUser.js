@@ -19,8 +19,13 @@ function ManageUser() {
   })
   const [users,setUsers]=useState([]);
   const classes=useStyle()
+  const token=localStorage.getItem('token');
    useEffect(()=>{
-    axios.get('http://localhost:3001/api/all_user')
+    axios.get('http://localhost:3001/api/all_user',{
+      headers: {
+         'auth-token':token
+      }
+  })
     .then(res=> res.data)
     .then(data=>{setUsers(data)
     console.log(data)

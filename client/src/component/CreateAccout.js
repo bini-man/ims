@@ -11,9 +11,9 @@ export default function CreateAccout() {
   const [role,setRole]=useState('')
   const [password,setPassword]=useState('')
   const [cpassword,setCpassword]=useState('')
-  const location = useLocation();
 
- const token=location.state.header
+ const token=localStorage.getItem('token');
+ 
   const hadelclick =() =>{
     let data={
       "first_name":firstName,
