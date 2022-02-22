@@ -1,5 +1,6 @@
-import { CardContent, CardHeader, Typography } from '@material-ui/core';
+import { Button, CardContent, CardHeader, Typography } from '@material-ui/core';
 import { Card, Grid, makeStyles } from '@material-ui/core'
+import { DeleteOutlined, EditOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AdminDashboard from './AdminDashboard'
@@ -35,7 +36,15 @@ const token=localStorage.getItem('token');
    
   }
   ,[])
- 
+ const hadeldelete =(id)=>{
+ console.log(id)
+          axios.post(`http://localhost:3001/api/incident/${id}`, {
+           headers: {
+                'auth-token':token
+            }
+        })
+        .then(res =>{console.log(res.data)})
+ }
   return (
     <div className={classes.root}>
        {/* <Grid container>
@@ -55,11 +64,19 @@ const token=localStorage.getItem('token');
                />
        <CardContent>
        <Typography variant="body" color="textSecondary">
-        Incident name:{incidents.incident_name}</Typography>
-        <Typography variant="body" color="textSecondary">   Incident description:{incidents.incident_description}</Typography>
-       <Typography variant="body" color="textSecondary">   Owner:{incidents.incident_owner}</Typography>
-       <Typography variant="body" color="textSecondary">  Created by:{incidents.incident_created_by}</Typography>
-        <Typography variant="body" color="textSecondary">  Incident Status:{incidents.incident_status}</Typography>
+        Incident name:{incidents.incident_name}</Typography><br/>
+        <Typography variant="body" color="textSecondary">   Incident description:{incidents.incident_description}</Typography><br/>
+       <Typography variant="body" color="textSecondary">   Owner:{incidents.incident_owner}</Typography><br/>
+       <Typography variant="body" color="textSecondary">  Created by:{incidents.incident_created_by}</Typography><br/>
+        <Typography variant="body" color="textSecondary">  Incident Status:{incidents.incident_status}</Typography><br/><br/>
+        <Button variant="contained" color='primary' onClick={()=>{
+         hadeldelete(incidents._id)
+        }} fullWidth startIcon={<DeleteOutlined />}>
+  Delete
+</Button><br/><br/>
+<Button variant="contained" color='secondary' fullWidth startIcon={<EditOutlined />}>
+  Edit
+</Button>
        </CardContent>
        </Card>
       </Grid> 

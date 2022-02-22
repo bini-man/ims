@@ -18,7 +18,8 @@ route.post("/incident_creat", verify,async (req,res)=>{
             incident_description:req.body.description,
             incident_owner:req.body.owner,
             incident_created_by:result.email,
-            incident_status:req.body.status
+            incident_status:req.body.status,
+            incident_assigned_to:''
         })
         const saved_incident=await incident.save()
         res.send(saved_incident)
@@ -157,6 +158,15 @@ route.post('/assign_incident/:id', verify,(req,res)=>{
 }
 }))
 })
+//List of unassigned incidents
+route.get('/all_unassigned',verify,(req,res)=>{
+    const query={incident_assigned_to:''}
+    Incident.find(query,(function(err,result){
+        if(err) return res.send(err)
+        
+        res.json(result)
+    }))
+})
 // incident's created by user's or assigned to them
 route.get('/created_assigned', verify,(req,res)=>{
     const user_id=req.user._id
@@ -170,6 +180,17 @@ route.get('/created_assigned', verify,(req,res)=>{
         
         res.json(result)
     }))
+    }))
+})
+// Activate and Deactivate user
+route.post('/active_deactive/:id', verify,(req,res)=>{
+    const user_id= req.params.id;
+    console.log(req)
+    User.findByIdAndUpdate({_id:user_id},{
+        status:req.body.status
+    },(function(err,result){
+        if(err) return res.send(err)
+        res.json("User information successfuly updated")
     }))
 })
 module.exports=route;

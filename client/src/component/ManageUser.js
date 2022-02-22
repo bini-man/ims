@@ -1,5 +1,7 @@
-import { CardContent, CardHeader, Typography } from '@material-ui/core';
+import { Button, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core';
 import { Card, Grid, makeStyles } from '@material-ui/core'
+import { EditOutlined } from '@material-ui/icons';
+import { DeleteOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AdminDashboard from './AdminDashboard'
@@ -34,7 +36,16 @@ function ManageUser() {
    
   }
   ,[])
- 
+  const hadeldelete =(id)=>{
+    console.log(id)
+             axios.post(`http://localhost:3001/api/user/${id}`, {
+              headers: {
+                'Content-Type': 'application/json',
+                   'auth-token':token
+               }
+           })
+           .then(res =>{console.log(res.data)})
+    }
   return (
     <div className={classes.root}>
        {/* <Grid container>
@@ -54,11 +65,19 @@ function ManageUser() {
                />
        <CardContent>
        <Typography variant="body" color="textSecondary">
-        First name:{user.first_name}</Typography>
-        <Typography variant="body" color="textSecondary">   Last name:{user.last_name}</Typography>
-       <Typography variant="body" color="textSecondary">   Email:{user.email}</Typography>
-       <Typography variant="body" color="textSecondary">  Role:{user.role}</Typography>
-        <Typography variant="body" color="textSecondary">   Status:{user.status}</Typography>
+        First name:{user.first_name}</Typography><br/>
+        <Typography variant="body" color="textSecondary">   Last name:{user.last_name}</Typography><br/>
+       <Typography variant="body" color="textSecondary">   Email:{user.email}</Typography><br/>
+       <Typography variant="body" color="textSecondary">  Role:{user.role}</Typography><br/>
+        <Typography variant="body" color="textSecondary">   Status:{user.status}</Typography><br/><br/>
+        <Button variant="contained" color='primary' fullWidth onClick={()=>{
+         hadeldelete(user._id)
+        }}  startIcon={<DeleteOutlined />}>
+  Delete
+</Button><br/><br/>
+<Button variant="contained" color='secondary' fullWidth startIcon={<EditOutlined />}>
+  Edit
+</Button>
        </CardContent>
        </Card>
       </Grid> 

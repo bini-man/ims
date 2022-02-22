@@ -11,11 +11,12 @@ export default function CreateIncident() {
 const token=localStorage.getItem('token');
   
   const hadelclick =() =>{
+    console.log(name,description,owner,status)
     let data={
-            "incident_name":name,
-            "incident_description":description,
-            "incident_owner":owner,
-            "incident_status":status
+            "name":name,
+            "description":description,
+            "owner":owner,
+            "status":status
     }
          
     
