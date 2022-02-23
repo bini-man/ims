@@ -45,7 +45,7 @@ route.post("/user_creat",  verify, async (req,res)=>{
             status:"active"
         })
         const saved_user=await user.save()
-        res.send(saved_user)
+        res.send('user successfuly created')
     } catch (error) {
         res.send(error)
     }

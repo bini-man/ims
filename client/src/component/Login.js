@@ -92,7 +92,7 @@ useEffect(()=>{
                     </Typography>
                     <form onSubmit={handelclick}>
                     <TextField value={email} onChange={(e)=>setEmail(e.target.value)} variant="outlined" required label="Email"   color='primary' className={classes.form}/> <br/><br/>
-                    <TextField value={password} onChange={(e)=>setPassword(e.target.value)} variant="outlined" required label="Password"  color='primary' className={classes.form}/>
+                    <TextField value={password} onChange={(e)=>setPassword(e.target.value)} type='password' variant="outlined" required label="Password"  color='primary' className={classes.form}/>
                       <Typography variant='h5' color='primary' className={classes.forget} > Forget Password?</Typography>
                       <Button color='secondary' variant="contained"  type="submit" >Login</Button>
                       </form>

@@ -1,8 +1,10 @@
-import { Button, Container, FormControl, FormControlLabel, FormLabel, Grid, makeStyles, Radio, RadioGroup, TextField, Typography } from '@material-ui/core'
+import { Backdrop, Box, Button, Container, Fade, FormControl, FormControlLabel, FormLabel, Grid, makeStyles, Radio, RadioGroup, Snackbar, TextField, Typography } from '@material-ui/core'
 import axios from 'axios'
 import React, { useState } from 'react'
 import AdminDashboard from './AdminDashboard'
 import {useLocation} from 'react-router-dom';
+import Modal from './Modal';
+import { Alert } from '@mui/material';
 
 export default function CreateAccout() {
   const [firstName,setFirstName]=useState('')
@@ -11,10 +13,24 @@ export default function CreateAccout() {
   const [role,setRole]=useState('')
   const [password,setPassword]=useState('')
   const [cpassword,setCpassword]=useState('')
-
+  const [open, setOpen] = useState(false);
+  const [message,setMessage]=useState('')
  const token=localStorage.getItem('token');
- 
+ const handleClose = () => setOpen(true);
+ const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
   const hadelclick =() =>{
+    if(password==cpassword){
     let data={
       "first_name":firstName,
       "last_name":lastName,
@@ -28,7 +44,12 @@ export default function CreateAccout() {
           'auth-token':token
       }
   })
-  .then(res =>{console.log(res.data)})
+  .then(res =>{setMessage(res.data)
+  setOpen(true)})
+}else{
+  setMessage("the password and confirm password are not the same")
+  setOpen(true)
+}
   }
   const useStyle=makeStyles((theme)=>{
     return{
@@ -48,7 +69,7 @@ export default function CreateAccout() {
   return (
     <div className={classes.root}>
      
-    
+   
       {/* <Grid container>
         <Grid item md={3}> */}
       <AdminDashboard />
@@ -58,8 +79,8 @@ export default function CreateAccout() {
       <TextField value={firstName} onChange={(e)=>setFirstName(e.target.value)} variant="outlined" className={classes.field} required label="First Name"   color='primary' /> <br/><br/>
       <TextField value={lastName} onChange={(e)=>setLastName(e.target.value)} variant="outlined" required label="Last Name" className={classes.field}  color='primary' /> <br/><br/>
       <TextField value={email} onChange={(e)=>setEmail(e.target.value)} variant="outlined" required label="Email" className={classes.field}  color='primary' /> <br/><br/>
-      <TextField value={password} onChange={(e)=>setPassword(e.target.value)} variant="outlined" required label="Password" className={classes.field}  color='primary' /> <br/><br/>
-      <TextField value={cpassword} onChange={(e)=>setCpassword(e.target.value)} variant="outlined" required label="Coniform Password" className={classes.field} color='primary' /><br/><br/>
+      <TextField value={password} onChange={(e)=>setPassword(e.target.value)} variant="outlined" type='password' required label="Password" className={classes.field}  color='primary' /> <br/><br/>
+      <TextField value={cpassword} onChange={(e)=>setCpassword(e.target.value)} variant="outlined" type='password' required label="Coniform Password" className={classes.field} color='primary' /><br/><br/>
       <FormControl className={classes.field}>
         <FormLabel>Role</FormLabel>
         <RadioGroup value={role} onChange={(e) =>setRole(e.target.value)}>
@@ -71,7 +92,35 @@ export default function CreateAccout() {
         <br/>
    <Button color="secondary"  type="submit" variant="contained" onClick={hadelclick}>Submit</Button>
       </Grid>          
-      {/* </Grid> */}
+      {/* <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade  in={open}>
+          <Box sx={style}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+             Notification
+            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+              {logged}
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal> */}
+              <Snackbar
+  open={open}
+  autoHideDuration={6000}
+  onClose={handleClose}
+  message={message}
+ 
+/> 
     </div>
   )
 }

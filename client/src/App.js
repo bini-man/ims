@@ -12,6 +12,7 @@ import AssignIncident from './component/AssignIncident';
 import Activate_user from './component/Activate_user';
 import UpdateUser from './component/UpdateUser';
 import UpdateIncident from './component/UpdateIncident';
+import Modal from './component/Modal';
 //import { Switch } from '@material-ui/core';
 // import { Route, Switch } from "react-router";
 const theme=createTheme({
@@ -39,6 +40,7 @@ function App() {
       <Route path='/activate_user' element={<Activate_user/>}></Route>
       <Route path='/update_user/:id' element={<UpdateUser/>}></Route>
       <Route path='/update_incident/:id' element={<UpdateIncident/>}></Route>
+      <Route path='/modal' element={<Modal/>}></Route>
      
       </Routes>
       </Router>
