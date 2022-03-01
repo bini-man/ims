@@ -92,28 +92,6 @@ export default function CreateAccout() {
         <br/>
    <Button color="secondary"  type="submit" variant="contained" onClick={hadelclick}>Submit</Button>
       </Grid>          
-      {/* <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade  in={open}>
-          <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-             Notification
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              {logged}
-            </Typography>
-          </Box>
-        </Fade>
-      </Modal> */}
               <Snackbar
   open={open}
   autoHideDuration={6000}

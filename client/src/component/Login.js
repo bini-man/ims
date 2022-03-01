@@ -47,7 +47,7 @@ export default function Login() {
     const token=localStorage.getItem('token');
 
 useEffect(()=>{
-    if(token) navigate('/create_account')
+    if(token) navigate('/create_incident')
 },[])
     const handleClose = () => setOpen(false);
     let data={
@@ -76,7 +76,8 @@ useEffect(()=>{
                 }
                 if(res.data.startsWith('ey')){
                   localStorage.setItem('token',res.data)
-                    navigate('/create_account',{state:{header:res.data}})
+
+                    navigate('/create_incident',{state:{header:res.data}})
             }
             })
     }

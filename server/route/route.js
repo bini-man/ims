@@ -192,4 +192,11 @@ route.post('/active_deactive/:id', verify,(req,res)=>{
         res.json("User information successfuly updated")
     }))
 })
+route.get('/role', verify,(req,res)=>{
+    const user_id=req.user._id;
+    User.findById({_id:user_id},( async function(err,result){
+        if(err) return res.send(err)
+        res.json(result.role)
+    }))
+})
 module.exports=route;
