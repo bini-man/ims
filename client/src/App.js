@@ -13,6 +13,7 @@ import Activate_user from './component/Activate_user';
 import UpdateUser from './component/UpdateUser';
 import UpdateIncident from './component/UpdateIncident';
 import Modal from './component/Modal';
+import Logout from './component/Logout';
 //import { Switch } from '@material-ui/core';
 // import { Route, Switch } from "react-router";
 const theme=createTheme({
@@ -41,6 +42,7 @@ function App() {
       <Route path='/update_user/:id' element={<UpdateUser/>}></Route>
       <Route path='/update_incident/:id' element={<UpdateIncident/>}></Route>
       <Route path='/modal' element={<Modal/>}></Route>
+      <Route path='/logout' element={<Logout/>}></Route>
      
       </Routes>
       </Router>

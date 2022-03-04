@@ -1,5 +1,5 @@
 import { Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles, Paper, Typography } from '@material-ui/core'
-import { AirplanemodeActiveOutlined, CreateOutlined } from '@material-ui/icons'
+import { AirplanemodeActiveOutlined, CreateOutlined, LocalDiningOutlined } from '@material-ui/icons'
 import { EditAttributesOutlined } from '@material-ui/icons'
 import { AssignmentIndOutlined } from '@material-ui/icons'
 import axios from 'axios'
@@ -29,7 +29,7 @@ const useStyles=makeStyles({
 })
 const classes=useStyles()
 const token=localStorage.getItem('token');
-const [role,setRole]=useState('GH')
+const [role,setRole]=useState('')
 useEffect(()=>{
     if(!token) navigate('/login')
 
@@ -76,6 +76,12 @@ text:'Deactivate/Activate User',
 path:'/activate_user',
 key:6,
 icon: <AirplanemodeActiveOutlined color="secondary"/>,
+},
+{
+text:'Log-Out',
+path:'/logout',
+key:7,
+icon: <LocalDiningOutlined color="secondary"/>,
 }])
 }else{
     setItem([{
@@ -91,7 +97,13 @@ icon: <AirplanemodeActiveOutlined color="secondary"/>,
     path:'/manage_incident',
     key:4,
     icon: <EditAttributesOutlined color="secondary"/>,
-    },])
+    },
+    {
+    text:'Log-Out',
+    path:'/logout',
+    key:5,
+    icon: <LocalDiningOutlined color="secondary"/>,
+    }])
 }
 })
 },[])
@@ -100,7 +112,7 @@ icon: <AirplanemodeActiveOutlined color="secondary"/>,
     <div >
        
         <Drawer  variant="permanent" classes={{ paper: classes.drawerpaper}}anchor="left" className={classes.drawer}>
-            <Typography variant='h6' color='primary'>{role} Dashboadrd</Typography>
+            <Typography variant='h6' color='primary'>{role.toUpperCase()} Dashboadrd</Typography>
             <List>
                 {item.map(items=>(
                     <ListItem key={items.key} button onClick={()=> navigate(items.path)} className={location.pathname==items.path? classes.active:null} >
