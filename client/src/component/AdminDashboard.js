@@ -106,7 +106,8 @@ icon: <LocalDiningOutlined color="secondary"/>,
     }])
 }
 })
-},[])
+},
+[])
   
   return (
     <div >
