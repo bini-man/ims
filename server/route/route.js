@@ -76,7 +76,6 @@ User.findById({_id:user_id},( function(err,result){
             const query={incident_created_by:result.email}
             Incident.find(query,(function(err,result){
                 if(err) return res.send(err)
-                
                 res.json(result)
             }))
         }
