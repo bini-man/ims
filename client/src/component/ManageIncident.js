@@ -24,7 +24,7 @@ function ManageIncident() {
   const navigate = useNavigate();
 
 const token=localStorage.getItem('token');
-
+const [loading,setLoading]=useState(true)
    useEffect(()=>{
     axios.get('http://localhost:3001/api/all_incident',{
       headers: {
@@ -32,7 +32,9 @@ const token=localStorage.getItem('token');
       }
   })
     .then(res=> res.data)
-    .then(data=>{setIncident(data)
+    .then(data=>{
+      setLoading(false)
+      setIncident(data)
     console.log(data)
     console.log(incident)
     })
@@ -54,7 +56,8 @@ const token=localStorage.getItem('token');
       
       <Grid container >
       <Grid item md={12} >
-      <Typography color='primary' variant='h3'>Manage Incident</Typography>
+        {loading ? <Typography color="primary" variant="h3">Loading Incident</Typography> : null}
+     {!loading ? <Typography color='primary' variant='h3'>Manage  Incident</Typography> : null} 
       </Grid>
    {incident.map(incidents=>(
     <Grid item md={4}>

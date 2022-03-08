@@ -1,0 +1,173 @@
+[33mcommit e185951015804f4734814e719d0fdc0934e62a0c[m[33m ([m[1;36mHEAD -> [m[1;32mnew[m[33m, [m[1;31morigin/new[m[33m)[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Mar 8 11:29:46 2022 +0300
+
+     minor change
+
+[33mcommit b2559fb4767b0bb4081d4d2bfc5810994c7e922f[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Mar 8 11:28:45 2022 +0300
+
+    filter the user and the incident
+
+[33mcommit bd73931124f3198b9674b8a1d7a59f707118f706[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Sat Mar 5 09:58:47 2022 +0300
+
+    simple
+
+[33mcommit 453dd6e64e1c51622268c987f8cfaf6f33ea1348[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Mar 4 15:29:50 2022 +0300
+
+    log out added
+
+[33mcommit f18df5602f8543b614e8c6748b5940224b756a6d[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Mar 1 17:56:06 2022 +0300
+
+    defining role for users
+
+[33mcommit 050ce4c5d1b32a7661e22123cc76daf78e3602b6[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Wed Feb 23 17:29:18 2022 +0300
+
+    finalizing the admin
+
+[33mcommit ec59340d27535f3a7c744966330843618004ea5a[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Feb 22 17:28:20 2022 +0300
+
+    finalizing the admin
+
+[33mcommit 6dd4c3481df5379fe4e3d3af40e3de481d8a33d7[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Feb 22 15:28:55 2022 +0300
+
+    working on admin dashboard
+
+[33mcommit ca95916e7ea63bdb769724f3d2a761fc3b307509[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Feb 22 10:35:06 2022 +0300
+
+    s
+
+[33mcommit f5bdce187dc95fc9f1ecc6a08218ce8e6c142740[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Tue Feb 22 09:43:02 2022 +0300
+
+    finalizing auth.
+
+[33mcommit 26f6a061e7e86c3fb4db2c54f508f3aa93ca7993[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 21 13:49:26 2022 +0300
+
+    noting
+
+[33mcommit 116b411acd69664231dbc19ef0937df843a7dba6[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 18 16:45:11 2022 +0300
+
+    feb 18 last commit
+
+[33mcommit 75542f8a361a0c2f99cfc396693ac5bc5168fee6[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 18 16:02:56 2022 +0300
+
+     adding some functionality
+
+[33mcommit c76feba7686b93ff4d8c0a6691b2b6267aaecf39[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 18 14:45:41 2022 +0300
+
+    working on creat and manage user
+
+[33mcommit 8cf15bcc60bfebb6e670c202273b504a1c5a2ad6[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 18 09:29:32 2022 +0300
+
+    login finsished
+
+[33mcommit 3cf90041ae4a9c3e9aec0dc93d4e126ec7cea174[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Thu Feb 17 17:06:05 2022 +0300
+
+    authenticating user finished
+
+[33mcommit 60f5dbd4628ea600ae1c180c401ad4aac0696a2e[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Thu Feb 17 16:37:35 2022 +0300
+
+    login
+
+[33mcommit 28271b3697eb55c4c576a02ba471b14506cc68ec[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Thu Feb 17 14:20:41 2022 +0300
+
+    begin front end
+
+[33mcommit c9ae389d3dd46e2612588f4189ade43617c6f946[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 14 14:40:44 2022 +0300
+
+    s
+
+[33mcommit dd0b4b060fa20df1db291fe6650669ff46d53f93[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 14 14:38:23 2022 +0300
+
+    front end
+
+[33mcommit 2bdaa9b452756535bd1b00c612023f933c2c6ef6[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 7 14:54:07 2022 +0300
+
+    starting the front end
+
+[33mcommit 9d2df5ac60e6210824a7eea6972c675df3993c1f[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 7 14:39:40 2022 +0300
+
+    finalizing
+
+[33mcommit e162558b651254b209bd4ca304ea1f60b33069dc[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 7 11:27:59 2022 +0300
+
+    autorization added
+
+[33mcommit c4cf36802813bc72e1cf9f5320e483a26880d95f[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Mon Feb 7 11:27:33 2022 +0300
+
+    autorization added
+
+[33mcommit 5c1ddf7e353c09b07a947514754ca40503b2f785[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 4 16:22:39 2022 +0300
+
+    fix some issues
+
+[33mcommit c5f0f8a3fe91f08cc39127bb5f57da24e5d3f5cc[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 4 14:04:30 2022 +0300
+
+    s
+
+[33mcommit 73e30766683cb5f071c502129b0e5caa0582245a[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 4 14:04:10 2022 +0300
+
+    tes
+
+[33mcommit de11ec163e509bce5338bb012edb7efd78a31d8e[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 4 13:48:29 2022 +0300
+
+    commited
+
+[33mcommit b82cf40386e5caf93e46a7791289e2d72927c884[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: bini-man <biniyambadege4@gmail.com>
+Date:   Fri Feb 4 13:43:33 2022 +0300
+
+    first commit
