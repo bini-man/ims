@@ -62,11 +62,26 @@ route.get('/all_user', verify,(req,res)=>{
 
 // to see all incident
 route.get('/all_incident', verify,(req,res)=>{
-    Incident.find({},(function(err,result){
-        if(err) return res.send(err)
-        res.json(result)
-    })
-    )
+    const user_id=req.user._id;
+User.findById({_id:user_id},( function(err,result){
+    if(err) return res.send(err)
+        if(result.role=="admin"){
+            Incident.find({},(function(err,result){
+                if(err) return res.send(err)
+                res.json(result)
+            })
+            )
+        }
+        if(result.role=="user"){
+            const query={incident_created_by:result.email}
+            Incident.find(query,(function(err,result){
+                if(err) return res.send(err)
+                
+                res.json(result)
+            }))
+        }
+}))
+   
 })
 // to return specific user
 route.get('/user/:id',verify,(req,res)=>{

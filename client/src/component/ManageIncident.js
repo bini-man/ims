@@ -50,10 +50,7 @@ const token=localStorage.getItem('token');
  }
   return (
     <div className={classes.root}>
-       {/* <Grid container>
-        <Grid item md={3}> */}
       <AdminDashboard/>
-      {/* </Grid> */}
       
       <Grid container >
       <Grid item md={12} >
