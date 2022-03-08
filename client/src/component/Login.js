@@ -65,7 +65,11 @@ useEffect(()=>{
             })
             .then(res => {
                 // console.log(res)
-                // console.log(res.data)
+                //  console.log(res.data)
+                if(res.data=='this user is deactivated'){
+                  setLogged(res.data)
+                  setOpen(true);
+                }
                 if(res.data=='email not exists'){
                     setLogged(res.data)
                      setOpen(true);

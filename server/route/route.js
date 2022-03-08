@@ -148,6 +148,7 @@ route.post('/update_incident/:id', verify,(req,res)=>{
 route.post('/login',async (req,res)=>{
     const user=await User.findOne({email:req.body.email})
     if(!user) return res.send("email not exists")
+    if(user.status=="deactive") return res.send("this user is deactivated")
     const valid_password= await bcrypt.compare(req.body.password,user.password)
     if(!valid_password) return res.send("invalid password")
     const token= jwt.sign({_id:user._id},process.env.TOKEN_SECRET)
