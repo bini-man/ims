@@ -112,7 +112,7 @@ icon: <LocalDiningOutlined color="secondary"/>,
     <div >
        
         <Drawer  variant="permanent" classes={{ paper: classes.drawerpaper}}anchor="left" className={classes.drawer}>
-            <Typography variant='h6' color='primary'>{role.toUpperCase()} Dashboadrd</Typography>
+            <Typography variant='h6' color='primary'>{role.toUpperCase()} Dashboadrds</Typography>
             <List>
                 {item.map(items=>(
                     <ListItem key={items.key} button onClick={()=> navigate(items.path)} className={location.pathname==items.path? classes.active:null} >

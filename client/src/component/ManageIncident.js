@@ -68,7 +68,7 @@ const [loading,setLoading]=useState(true)
        <CardContent>
        <Typography variant="body" color="textSecondary">
         Incident name:{incidents.incident_name}</Typography><br/>
-        <Typography variant="body" color="textSecondary">   Incident description:{incidents.incident_description}</Typography><br/>
+        <Typography variant="body" color="textSecondary">  Incident description:{incidents.incident_description}</Typography><br/>
        <Typography variant="body" color="textSecondary">   Owner:{incidents.incident_owner}</Typography><br/>
        <Typography variant="body" color="textSecondary">  Created by:{incidents.incident_created_by}</Typography><br/>
         <Typography variant="body" color="textSecondary">  Incident Status:{incidents.incident_status}</Typography><br/><br/>
